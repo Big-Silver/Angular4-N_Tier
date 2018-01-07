@@ -1,0 +1,40 @@
+<section *ngIf="!loading">
+  <div class="container-fluid">
+    <div>
+      <input type="number" [ngModel]="num1" (ngModelChange)="num1 = $event"> + <input type="number" [ngModel]="num2" (ngModelChange)="num2 = $event"> = {{sum}}
+    </div>
+    <button type="button" class="btn btn-primary" (click)="calc()">Calc</button>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="getPosition()">Get IP Adress</button>
+    </div>
+    <table id="customers">
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Country</th>
+          <th>Hostname</th>
+          <th>Ip</th>
+          <th>Location</th>
+          <th>Org</th>
+          <th>Postal</th>
+          <th>Region</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="geoFlag === true">
+        <tr>
+          <td>{{position.city}}</td>
+          <td>{{position.country}}</td>
+          <td>{{position.hostname}}</td>
+          <td>{{position.ip}}</td>
+          <td>{{position.loc}}</td>
+          <td>{{position.org}}</td>
+          <td>{{position.postal}}</td>
+          <td>{{position.region}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section *ngIf="loading">
+  <app-spinner></app-spinner>
+</section>
